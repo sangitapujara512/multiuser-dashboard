@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+}
+.homeCenter{
+    text-align: center;
+    background-color:#e8f0f8;
+
+}
+.homeleft{
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    color:#06023d;
+}
+.activeRoles{
+    /* height:25% !important; */
+    width:100%;
+}
+.usersAccess{
+    /* height:75% !important; */
+    width:100%;
+}
+    
