@@ -58,17 +58,7 @@
     height: 36px;
     border-radius: 4px;
 }
-.searchStyle{  
-    margin-left: 25%;    
-    border: 1px solid #0c48ec;
-    border-radius: 4px;
-    position: relative;    
-    height: 6vh;  
-    width: 50%;    
-    margin-top: 5vh;
-    margin-bottom: 10vh;
-    text-align: center;
-}
+
 .addIcon{
   color: #0c48ec;
   cursor: pointer;
@@ -77,4 +67,4 @@
 .errorStyle {
   color:red !important;
 }
-html,body { height:100%; }
+html,body ,#root,.App,homePage{ height:100%; }

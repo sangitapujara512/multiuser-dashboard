@@ -43,129 +43,7 @@ class LoginForm extends React.PureComponent {
     
 
   handleSubmit = (values, { setSubmitting }) => {
-    // Data to be set initially on login
-    const data=[
-      {
-      Role: "Admin",
-      access:{
-        "home": 1,
-        "trips": 1,
-        "pastTrips": 1,
-        "createTrip": 1,
-        "alerts": 1,
-        "alertManagement":1,
-        "sensors": 1,
-        "addSensors": 1,
-        "routes" : 1,
-        "addRoutes": 1,
-        "users": 1,
-        "addUsers":1,
-        "dashBoard": 1,
-        "report": 1,
-        "roleSettings":1,
-        }
-      },
-      {
-      Role: "Driver",
-      access:{
-        "home": 1,
-        "trips": 1,
-        "pastTrips": 1,
-        "createTrip": 1,
-        "alerts": 1,
-        "alertManagement":1,
-        "sensors": 1,
-        "addSensors": 1,
-        "routes" : 1,
-        "addRoutes": 1,
-        "users": 1,
-        "addUsers":1,
-        "dashBoard": 1,
-        "report": 1,
-        "roleSettings":1,
-        }
-      },
-      {
-          Role: "FleetManager",
-          access:{
-            "home": 1,
-            "trips": 1,
-            "pastTrips": 1,
-            "createTrip": 1,
-            "alerts": 1,
-            "alertManagement":1,
-            "sensors": 1,
-            "addSensors": 1,
-            "routes" : 1,
-            "addRoutes": 1,
-            "users": 1,
-            "addUsers":1,
-            "dashBoard": 1,
-            "report": 1,
-            "roleSettings":1,
-            }
-          },
-          {
-            Role: "SuperAdmin",
-            access:{
-              "home": 1,
-              "trips": 1,
-              "pastTrips": 1,
-              "createTrip": 1,
-              "alerts": 1,
-              "alertManagement":1,
-              "sensors": 1,
-              "addSensors": 1,
-              "routes" : 1,
-              "addRoutes": 1,
-              "users": 1,
-              "addUsers":1,
-              "dashBoard": 1,
-              "report": 1,
-              "roleSettings":1,
-              }
-            },
-            {
-              Role: "NewAdmin",
-              access:{
-                "home": 1,
-                "trips": 1,
-                "pastTrips": 1,
-                "createTrip": 1,
-                "alerts": 1,
-                "alertManagement":1,
-                "sensors": 1,
-                "addSensors": 1,
-                "routes" : 1,
-                "addRoutes": 1,
-                "users": 1,
-                "addUsers":1,
-                "dashBoard": 1,
-                "report": 1,
-                "roleSettings":1,
-                }
-              },
-              {
-                Role: "Admin",
-                access:{
-                  "home": 1,
-                  "trips": 1,
-                  "pastTrips": 1,
-                  "createTrip": 1,
-                  "alerts": 1,
-                  "alertManagement":1,
-                  "sensors": 1,
-                  "addSensors": 1,
-                  "routes" : 1,
-                  "addRoutes": 1,
-                  "users": 1,
-                  "addUsers":1,
-                  "dashBoard": 1,
-                  "report": 1,
-                  "roleSettings":1,
-                  }
-                },
-    ]
+    
 
     // If doctor logged in 
      if(values.password === 'Admin123'){
@@ -178,17 +56,17 @@ class LoginForm extends React.PureComponent {
        
         //  dispatch(setLogin("account","newValue"))
      this.props.setLogin(values.email,values.password,values.role);
-     this.props.setRole(data);
+    
      }
      if(values.password === "Password"){
       
       this.setState({
         otherLoggedIn:true
       });
-      // values.role="patient"
+     
       
    this.props.setLogin(values.email,values.password,values.role);
-   this.props.setRole(data);
+  
    }
   //  If wrong password entered
      else {
@@ -238,11 +116,11 @@ if(this.state.wrongPassword !== prevState.wrongPassword){
   render() {   
        const {otherLoggedIn,adminLoggedIn}= this.state;
 
-      //  redirect patient to patientprofile
+      //  redirect 
        if (otherLoggedIn) {
         return <Redirect to='/home' />;
       }
-      //  redirect doctor to patientlist   
+      //  redirect   
       if (adminLoggedIn) {
         return <Redirect to='/home' />;
       } 

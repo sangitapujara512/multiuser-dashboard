@@ -17,6 +17,7 @@ export default function setBrowserInfo(state = initialState, action) {
         roleList: [...state.roleList, action.payload.roleDetails],
       };
     case ADD_ROLE:
+    console.log("ADD_ROLE",action)
       return {
         ...state,
         roleList: [action.payload.roleDetails],
