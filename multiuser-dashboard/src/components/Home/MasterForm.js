@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import Checkbox from '@material-ui/core/Checkbox';
+import {connect} from 'react-redux'
+import shortid from 'shortid';
+import {setRole,addRole} from '../../actions/roleAction'
 class MasterForm extends React.Component {
     constructor(props) {
       super(props)
@@ -6,29 +10,189 @@ class MasterForm extends React.Component {
         currentStep: 1,
         email:  '',
         username: '',
-        password: '', 
+        password: '',
+        roleName:'',
+        roleStatus: 'active',
+        // 
+        home: 0,
+        trips:0,
+        pastTrips:0,
+        createTrip:0,
+        alerts:0,
+        alertManagement:0,
+        sensors:0,
+        addSensors:0,
+        routes:0,
+        addRoutes:0,
+        users:0,
+        addUsers:0,
+        dashboard:0,
+        report:0,
+        roleSettings:0,
+
       }
     }
   
     handleChange = event => {
+        
       const {name, value} = event.target
       this.setState({
         [name]: value
-      })    
+      })   
+      if(event.name == 'trips'){
+          this.setState({
+            trips:1   
+          });
+
+      } 
     }
+    // Multiple handle change for access 
+
+   
+    handleAddChange = (e) => {   
+        console.log(e) 
+      
+        if(e == 'home'){
+            this.setState({
+                home:1, 
+            });
+        }
+        if(e == 'trips'){
+            this.setState({
+                trips:1, 
+            });
+        }
+        if(e == 'pastTrips'){
+            this.setState({
+                pastTrips:1, 
+            });
+        }
+        if(e == 'createTrip'){
+            this.setState({
+                createTrip:1, 
+            });
+        }
+        if(e == 'alerts'){
+            this.setState({
+                alerts:1, 
+            });
+        }
+        if(e == 'alertManagement'){
+            this.setState({
+                alertManagement:1, 
+            });
+        }
+        if(e == 'sensors'){
+            this.setState({
+                sensors:1, 
+            });
+        }
+        if(e == 'addSensors'){
+            this.setState({
+                addSensors:1, 
+            });
+        }
+        if(e == 'routes'){
+            this.setState({
+                routes:1, 
+            });
+        }
+        if(e == 'addRoutes'){
+            this.setState({
+                addRoutes:1, 
+            });
+        }
+        if(e == 'users'){
+            this.setState({
+                users:1, 
+            });
+        }
+        if(e == 'addUsers'){
+            this.setState({
+                addUsers:1, 
+            });
+        }
+        if(e == 'dashboard'){
+            this.setState({
+                dashboard:1, 
+            });
+        }
+        if(e == 'report'){
+            this.setState({
+                report:1, 
+            });
+        }
+        if(e == 'roleSettings'){
+            this.setState({
+                roleSettings :1, 
+            });
+        }
+      }
+
+    
+
      
-    handleSubmit = event => {
-      event.preventDefault()
-      const { email, username, password } = this.state
-      alert(`Your registration detail: \n 
-             Email: ${email} \n 
-             Username: ${username} \n
-             Password: ${password}`)
-    }
+    // handleSubmit = event => {
+    //   event.preventDefault()
+
+    //   console.log()
+    //   const { roleName, username, password ,home,trips,pastTrips} = this.state
+   
+    //   console.log("STATE",this.state);
+    //   this.props.setRole(data);
+     
+    //          this.props.closeAddModal();
+    // }
+
+
+    handleSubmit = (values) => {
+        values.preventDefault()
+            const data=      
+              {
+                Role: this.state.roleName,
+                access:{
+                  "home": this.state.home,
+                  "trips": this.state.trips,
+                  "pastTrips": this.state.pastTrips,
+                  "createTrip": this.state.createTrip,
+                  "alerts": this.state.alerts,
+                  "alertManagement":this.state.alertManagement,
+                  "sensors": this.state.sensors,
+                  "addSensors": this.state.addSensors,
+                  "routes" : this.state.routes,
+                  "addRoutes": this.state.addRoutes,
+                  "users": this.state.users,
+                  "addUsers":this.state.addUsers,
+                  "dashBoard": this.state.dashboard,
+                  "report": this.state.report,
+                  "roleSettings":this.state.roleSettings,
+                  }
+                }
+              
+        
+        const roleList=this.props && this.props.role[0] &&  this.props.role[0].roleList[0]
+            const roleAdd = data;
+            console.log(roleList)
+           
+            const key=shortid.generate()
+            data.id=key;
+        
+            const finalAdd=[...roleList,roleAdd]
+            // Trigger Add action
+          this.props.addRole(finalAdd) 
+          this.props.closeAddModal(); 
+            
+            //  setSubmitting(false);
+            // this.props.closeAddModal();
+            
+          };
+
+
+    
     
     _next = () => {
       let currentStep = this.state.currentStep
-      currentStep = currentStep >= 2? 3: currentStep + 1
+      currentStep = currentStep >= 1? 2: currentStep + 1
       this.setState({
         currentStep: currentStep
       })
@@ -61,7 +225,7 @@ class MasterForm extends React.Component {
   
   nextButton(){
     let currentStep = this.state.currentStep;
-    if(currentStep <3){
+    if(currentStep <2){
       return (
         <button 
           className="btn btn-primary float-right" 
@@ -86,16 +250,16 @@ class MasterForm extends React.Component {
           <Step1 
             currentStep={this.state.currentStep} 
             handleChange={this.handleChange}
-            email={this.state.email}
+            roleName={this.state.roleName}
           />
-          <Step2 
+          {/* <Step2 
             currentStep={this.state.currentStep} 
             handleChange={this.handleChange}
             username={this.state.username}
-          />
-          <Step3 
+          /> */}
+          <Step2 
             currentStep={this.state.currentStep} 
-            handleChange={this.handleChange}
+            handleChange={this.handleAddChange}
             password={this.state.password}
           />
           {this.previousButton()}
@@ -113,61 +277,137 @@ class MasterForm extends React.Component {
     } 
     return(
       <div className="form-group">
-        <label htmlFor="email">Email address</label>
+        <label htmlFor="roleName">Role Name</label>
         <input
           className="form-control"
-          id="email"
-          name="email"
+          id="roleName"
+          name="roleName"
           type="text"
-          placeholder="Enter email"
-          value={props.email}
+          placeholder="Role Name"
+          value={props.roleName}
           onChange={props.handleChange}
           />
       </div>
     );
   }
+  
+//   function Step2(props) {
+//     if (props.currentStep !== 3) {
+//       return null
+//     } 
+//     return(
+//       <div className="form-group">
+//         <label htmlFor="username">Username</label>
+//         <input
+//           className="form-control"
+//           id="username"
+//           name="username"
+//           type="text"
+//           placeholder="Enter username"
+//           value={props.username}
+//           onChange={props.handleChange}
+//           />
+//       </div>
+//     );
+//   }
   
   function Step2(props) {
     if (props.currentStep !== 2) {
       return null
     } 
     return(
-      <div className="form-group">
-        <label htmlFor="username">Username</label>
-        <input
-          className="form-control"
-          id="username"
-          name="username"
-          type="text"
-          placeholder="Enter username"
-          value={props.username}
-          onChange={props.handleChange}
-          />
-      </div>
-    );
-  }
-  
-  function Step3(props) {
-    if (props.currentStep !== 3) {
-      return null
-    } 
-    return(
       <React.Fragment>
-      <div className="form-group">
+      {/* <div className="form-group">
         <label htmlFor="password">Password</label>
         <input
           className="form-control"
           id="password"
           name="password"
-          type="password"
+          type="checkbox"
           placeholder="Enter password"
           value={props.password}
           onChange={props.handleChange}
           />      
-      </div>
+
+      </div> */}
+
+        {/* pastTrips:0,
+        createTrip:0,
+        alerts:0,
+        alertManagement:0,
+        sensors:0,
+        addSensors:0,
+        routes:0,
+        addRoutes:0,
+        users:0,
+        addUsers:0,
+        dashboard:0,
+        report:0,
+        roleSettings:0, */}
+
+       <label for="home"> home</label>
+        <input type="checkbox" id="home" name="home" value={props.home} onClick={props.handleChange.bind(this,"home")}/>
+        
+        <label for="trips">trips</label>
+        <input type="checkbox" id="trips" name="trips" value={props.trips} onClick={props.handleChange.bind(this,"trips")}/>
+        
+        <label for="pastTrips"> pastTrips</label>
+        <input type="checkbox" id="pastTrips" name="pastTrips" value={props.pastTrips} onClick={props.handleChange.bind(this,"pastTrips")}/>
+
+        <label for="createTrip"> createTrip</label>
+        <input type="checkbox" id="createTrip" name="createTrip" value={props.createTrip} onClick={props.handleChange.bind(this,"createTrip")}/>
+
+        <label for="alerts"> alerts</label>
+        <input type="checkbox" id="alerts" name="alerts" value={props.alerts} onClick={props.handleChange.bind(this,"alerts")}/>
+
+        <label for="alertManagement"> alertManagement</label>
+        <input type="checkbox" id="alertManagement" name="alertManagement" value={props.alertManagement} onClick={props.handleChange.bind(this,"alertManagement")}/>
+
+        <label for="sensors"> sensors</label>
+        <input type="checkbox" id="sensors" name="sensors" value={props.sensors} onClick={props.handleChange.bind(this,"sensors")}/>
+
+        <label for="addSensors"> addSensors</label>
+        <input type="checkbox" id="addSensors" name="addSensors" value={props.addSensors} onClick={props.handleChange.bind(this,"addSensors")}/>
+
+        <label for="routes"> routes</label>
+        <input type="checkbox" id="routes" name="routes" value={props.routes} onClick={props.handleChange.bind(this,"routes")}/>
+
+        <label for="addRoutes"> addRoutes</label>
+        <input type="checkbox" id="addRoutes" name="addRoutes" value={props.addRoutes} onClick={props.handleChange.bind(this,"addRoutes")}/>
+
+        <label for="users"> users</label>
+        <input type="checkbox" id="users" name="users" value={props.users} onClick={props.handleChange.bind(this,"users")}/>
+
+        <label for="addUsers"> addUsers</label>
+        <input type="checkbox" id="addUsers" name="addUsers" value={props.addUsers} onClick={props.handleChange.bind(this,"addUsers")}/>
+
+        <label for="dashboard"> dashboard</label>
+        <input type="checkbox" id="dashboard" name="dashboard" value={props.dashboard} onClick={props.handleChange.bind(this,"dashboard")}/>
+
+        <label for="report"> report</label>
+        <input type="checkbox" id="report" name="report" value={props.report} onClick={props.handleChange.bind(this,"report")}/>
+
+        <label for="roleSettings"> roleSettings</label>
+        <input type="checkbox" id="roleSettings" name="roleSettings" value={props.roleSettings} onClick={props.handleChange.bind(this,"roleSettings")}/>
+
       <button className="btn btn-success btn-block">Sign up</button>
       </React.Fragment>
     );
   }
-  
-export default MasterForm
+
+
+const mapStateToProps = (state) => ({
+    role: [state.role],
+  });
+  const mapDispatchToProps = (dispatch) => ({ 
+        setRole: (data) =>
+        dispatch(setRole(data)),
+        addRole: (data) =>
+        dispatch(addRole(data)),
+        // setLogin: (email,password,role) =>
+        //   dispatch(setLogin(email,password,role)),
+  });
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MasterForm);

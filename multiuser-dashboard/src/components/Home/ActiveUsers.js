@@ -65,7 +65,7 @@ export default function ActiveUsers({data}) {
           sm={12}
           xs={12}
           className='rolesLayout'>
-          {data.map((role)=><RoleCards role={role}/>)}
+          {data.map((role)=><RoleCards role={role} key={role.id}/>)}
         </Grid>
         </Grid>
        

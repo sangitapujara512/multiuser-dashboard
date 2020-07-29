@@ -18,6 +18,13 @@ import Modal from 'react-modal';
 import MasterForm from './MasterForm'
 
  class Home extends Component {
+
+  constructor(){
+    super();
+    this.state={
+      showAddModal : false
+    }
+  }
   // logout = () => {
   //   dispatch(setLogin('', '', ''));
   // }
@@ -31,46 +38,60 @@ componentDidUpdate(){
  console.log("UPDATED",this.props)
 }
 
+
+handleAddButton=()=>{
+  this.setState({
+    showAddModal: true
+  })
+
+}
+
+closeAddModal=()=>{
+  this.setState({
+    showAddModal: false
+  })
+
+}
 // handleAddRole = (values, { setSubmitting }) => {
-  handleAddRole = (values) => {
-    const data=      
-      {
-        Role: "New1Admin",
-        access:{
-          "home": 1,
-          "trips": 1,
-          "pastTrips": 1,
-          "createTrip": 1,
-          "alerts": 1,
-          "alertManagement":1,
-          "sensors": 1,
-          "addSensors": 1,
-          "routes" : 1,
-          "addRoutes": 1,
-          "users": 1,
-          "addUsers":1,
-          "dashBoard": 1,
-          "report": 1,
-          "roleSettings":1,
-          }
-        }
+//   handleAddRole = (values) => {
+//     const data=      
+//       {
+//         Role: "New1Admin",
+//         access:{
+//           "home": 1,
+//           "trips": 1,
+//           "pastTrips": 1,
+//           "createTrip": 1,
+//           "alerts": 1,
+//           "alertManagement":1,
+//           "sensors": 1,
+//           "addSensors": 1,
+//           "routes" : 1,
+//           "addRoutes": 1,
+//           "users": 1,
+//           "addUsers":1,
+//           "dashBoard": 1,
+//           "report": 1,
+//           "roleSettings":1,
+//           }
+//         }
       
 
-const roleList=this.props && this.props.role[0] &&  this.props.role[0].roleList[0]
-    const roleAdd = data;
-    console.log(roleList)
+// const roleList=this.props && this.props.role[0] &&  this.props.role[0].roleList[0]
+//     const roleAdd = data;
+//     console.log(roleList)
    
-    const key=shortid.generate()
-    data.id=key;
+//     const key=shortid.generate()
+//     data.id=key;
 
-    const finalAdd=[...roleList,roleAdd]
-    // Trigger Add action
-  this.props.addRole(finalAdd)  
+//     const finalAdd=[...roleList,roleAdd]
+//     // Trigger Add action
+//   this.props.addRole(finalAdd)  
     
-    //  setSubmitting(false);
-    // this.props.closeAddModal();
+//     //  setSubmitting(false);
+//     // this.props.closeAddModal();
     
-  };
+//   };
 
 
   
@@ -110,13 +131,24 @@ const roleList=this.props && this.props.role[0] &&  this.props.role[0].roleList[
             lg={3}
             md={3} className='homeleft' >
         <h1>HOME</h1>
-        <MasterForm/>
+        <Modal
+          isOpen={this.state.showAddModal}
+          
+          onRequestClose={this.closeAddModal}
+          
+          contentLabel="Example Modal"
+        >
+        <MasterForm closeAddModal ={this.closeAddModal}/>
+        {/* <div>ADD</div> */}
+          </Modal>
+          
+        {/* <MasterForm/> */}
         </Grid>
         <Grid item           
             lg={8}
             md={8} className='homeCenter' >
           <Grid className="activeRoles" style={{height:'50%'}}>
-          <button onClick={this.handleAddRole}>Add Role</button>
+          <button onClick={this.handleAddButton}>Add Role</button>
           <ActiveUsers data={data}/>
           
           
