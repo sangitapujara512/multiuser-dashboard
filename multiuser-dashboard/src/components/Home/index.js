@@ -22,7 +22,8 @@ import MasterForm from './MasterForm'
   constructor(){
     super();
     this.state={
-      showAddModal : false
+      showAddModal : false,
+      roles:data,
     }
   }
   // logout = () => {
@@ -33,10 +34,26 @@ componentDidMount(){
   console.log("mount",data)
   this.props.setRole(data);
 }
-componentDidUpdate(){
-  console.log("mount",data)
- console.log("UPDATED",this.props)
+componentDidUpdate(prevProps){
+  const prev=prevProps && prevProps.role[0] && prevProps.role[0].roleList[0] && prevProps.role[0].roleList[0];
+  const latest=this.props && this.props.role[0] && this.props.role[0].roleList[0] && this.props.role[0].roleList[0];
+  console.log("prevProps",prev)
+ console.log("this.props",latest)
+ if(prev && prev.length < latest && latest.length){
+
+  this.setState({
+    roles:latest,
+    
+  });
+  this.props.setRole(latest);
+
+ }
+ 
 }
+
+
+
+
 
 
 handleAddButton=()=>{
@@ -97,8 +114,9 @@ closeAddModal=()=>{
   
   render() {
    
-    const roles =  this.props && this.props.role[0] && this.props.role[0].roleList[0]
-    console.log("data",roles);
+     const data =  this.props && this.props.role[0] && this.props.role[0].roleList[0]
+    // const data=this.state.roles;
+    // console.log("DATA",this.state.roles);
     // const steps = [
     //   {name: 'StepOne', component: <div>1</div>},
     //   {name: 'StepTwo', component:<div>2</div>},     

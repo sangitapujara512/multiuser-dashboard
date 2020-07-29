@@ -38,7 +38,7 @@ export default function UsersAccessSummary({data}) {
 
   return (
     <List className={classes.root}>
-      {data.map(value => {
+      {data && data.map(value => {
         const labelId = `checkbox-list-label-${value.access}`;
 
         return (

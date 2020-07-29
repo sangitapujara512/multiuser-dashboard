@@ -24,7 +24,7 @@ export default function ActiveUsers({data}) {
   const classes = useStyles();
   console.log("active",data)
   // set variables as per data
-  let numberRoles=data.length;
+  let numberRoles=data && data.length;
 
 
   return (
@@ -65,7 +65,7 @@ export default function ActiveUsers({data}) {
           sm={12}
           xs={12}
           className='rolesLayout'>
-          {data.map((role)=><RoleCards role={role} key={role.id}/>)}
+          {data && data.map((role)=><RoleCards role={role} key={role.id}/>)}
         </Grid>
         </Grid>
        
