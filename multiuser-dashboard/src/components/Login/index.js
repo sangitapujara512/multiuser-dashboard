@@ -6,8 +6,7 @@ import {connect} from 'react-redux'
 import {setLogin} from '../../actions/loginAction'
 import {setRole} from '../../actions/roleAction'
 import {
-    Redirect,
-    Link as Link,
+    Redirect,   
   } from 'react-router-dom';  
   import { withToastManager } from 'react-toast-notifications';
   import Grid from '@material-ui/core/Grid';
@@ -43,18 +42,12 @@ class LoginForm extends React.PureComponent {
     
 
   handleSubmit = (values, { setSubmitting }) => {
-    
-
-    // If doctor logged in 
+    // If Admin logged in 
      if(values.password === 'Admin123'){
          
          this.setState({
           adminLoggedIn:true
         });
-        
-        //  values.role="doctor"
-       
-        //  dispatch(setLogin("account","newValue"))
      this.props.setLogin(values.email,values.password,values.role);
     
      }

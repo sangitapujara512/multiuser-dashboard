@@ -61,47 +61,6 @@ const data=[
           "report": 0   ,
           "roleSettings":0,
           }
-        },
-        // {
-        //   Role: "SuperAdmin",
-        //   access:{
-        //     "home": 1,
-        //     "trips": 1,
-        //     "pastTrips": 1,
-        //     "createTrip": 1,
-        //     "alerts": 1,
-        //     "alertManagement":1,
-        //     "sensors": 1,
-        //     "addSensors": 1,
-        //     "routes" : 1,
-        //     "addRoutes": 1,
-        //     "users": 1,
-        //     "addUsers":1,
-        //     "dashBoard": 1,
-        //     "report": 1,
-        //     "roleSettings":1,
-        //     }
-        //   },
-        //   {
-        //     Role: "NewAdmin",
-        //     access:{
-        //       "home": 1,
-        //       "trips": 1,
-        //       "pastTrips": 1,
-        //       "createTrip": 1,
-        //       "alerts": 1,
-        //       "alertManagement":1,
-        //       "sensors": 1,
-        //       "addSensors": 1,
-        //       "routes" : 1,
-        //       "addRoutes": 1,
-        //       "users": 1,
-        //       "addUsers":1,
-        //       "dashBoard": 1,
-        //       "report": 1,
-        //       "roleSettings":1,
-        //       }
-        //     },
-            
+        },  
   ]
   export default data;

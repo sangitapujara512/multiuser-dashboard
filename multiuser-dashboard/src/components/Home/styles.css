@@ -62,10 +62,6 @@ html,body ,#root,.App,homePage{ height:100%; }
     line-height: 50px; 
     text-align: center; 
     }
-/* .listItem{
-        display: block;
-
-    } */
 .usersAccess >ul {
     display:flex;
 }
@@ -89,21 +85,14 @@ html,body ,#root,.App,homePage{ height:100%; }
     font-weight: bold;
     color: grey;
 }
-.activeText{
-    /* text-align: center; */
+.activeText{   
     color:#8f29ca !important; 
     font-weight: bold;  
 }
 .MuiSwitch-colorSecondary {
     color:#ffffff !important; 
     font-size: 10px;
-    /* background-color: #8f29ca !important; */
-   
-
 }
-.MuiSwitch-track{
-    /* border:1px solid black; */
-    
-    /* color:#3e156e !important;  */
+.MuiSwitch-track{    
     background-color: #1e971e !important
 }

@@ -9,8 +9,6 @@ import {
   BrowserRouter,
 } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
-// import PatientProfile from './components/PatientProfile'
-// import PatientList from './components/PatientList'
 import Home from './components/Home'
 import ComponentNotFound from './components/ComponentNotFound'
 
@@ -24,8 +22,7 @@ function App() {
       
       <Route path='/' exact component={Login} />   
       <Route path='/home' exact component={Home} />   
-      {/* <Route path='/patientprofile' exact component={PatientProfile} />
-      <Route path='/patientlist' exact component={PatientList} /> */}
+     
       <Route path='*' component={ComponentNotFound} />
       </Switch>
       </BrowserRouter>
