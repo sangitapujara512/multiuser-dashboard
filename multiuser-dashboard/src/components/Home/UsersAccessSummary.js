@@ -12,13 +12,17 @@ import CommentIcon from "@material-ui/icons/Comment";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
-    maxWidth: 360,
+    // maxWidth: 360,
     backgroundColor: theme.palette.background.paper
   }
 }));
 
 export default function UsersAccessSummary({data}) {
-    console.log("acccs",data)
+    // console.log("acccs",data)
+    let mydata=data;
+//   var myArr = Object.keys(data && data)
+
+    console.log("acccs",mydata)
     // var userAccess = role.access;
   const classes = useStyles();
   const [checked, setChecked] = React.useState([0]);
@@ -39,27 +43,32 @@ export default function UsersAccessSummary({data}) {
   return (
     <List className={classes.root}>
       {data && data.map(value => {
+         
+          let access=Object.values(value && value.access)
+          console.log("value",access)
         const labelId = `checkbox-list-label-${value.access}`;
 
         return (
           <ListItem
-            key={value}
+            key={value.id}
             role={undefined}
             dense
             button
             // onClick={handleToggle(value)}
+            style={{display:'block'}}
           >
-            <ListItemText id={labelId} primary={`Line item ${value.access}`} />
-            {[0, 1, 2, 3].map(item => (
-              <ListItemIcon>
+            <ListItemText id={labelId} primary={`${value.Role}`} />
+            {access.map(item => (
+              <ListItemIcon  style={{display:'block'}}>
+                  {/* {item.key} */}
                 <Checkbox
                   edge="start"
-                //   checked={checked.indexOf(value) !== -1}
-                checked={false}
+                   checked={item == 1}
+                //   checked={false}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ "aria-labelledby": labelId }}
-                />
+                 />
               </ListItemIcon>
             ))}
 

@@ -62,4 +62,13 @@ html,body ,#root,.App,homePage{ height:100%; }
     line-height: 50px; 
     text-align: center; 
     }
+/* .listItem{
+        display: block;
 
+    } */
+.usersAccess >ul {
+    display:flex;
+}
+.usersAccess >ul >li {
+    /* display:block !important; */
+}
