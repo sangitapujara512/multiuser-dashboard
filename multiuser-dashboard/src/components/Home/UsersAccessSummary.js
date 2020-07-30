@@ -14,6 +14,9 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import DescriptionIcon from '@material-ui/icons/Description';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AssessmentIcon from '@material-ui/icons/Assessment';
+import { useSelector, useDispatch } from 'react-redux';
+import DeleteIcon from '@material-ui/icons/Delete';
+import {deleteRole} from '../../actions/roleAction';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,7 +39,27 @@ export default function UsersAccessSummary({data}) {
 //   var myArr = Object.keys(data && data)
 
     console.log("acccs",mydata)
+    const getUsers = useSelector((state) => state && state.role);
+    const dispatch = useDispatch();
+    const users = getUsers && getUsers.roleList[0];
+    console.log("getUsers",users);
     // var userAccess = role.access;
+    const handleDelete=(e)=>{
+        console.log("e",e)
+        alert("delete");
+
+        // 
+
+        const users1=users;
+    
+    const postDelete=users.filter((user)=>{
+      
+      return user.id !=e.id     
+    })
+    dispatch(deleteRole(postDelete));
+    //this.props.deleteRole(postDelete)
+
+    }
   const classes = useStyles();
   const [checked, setChecked] = React.useState([0]);
 
@@ -148,13 +171,19 @@ let iconName=[]
             // onClick={handleToggle(value)}
             style={{display:'block'}}
           >
+          
+              <div onClick={handleDelete.bind(this,value)} style={{cursor:'pointer'}} >
+              <DeleteIcon style={{cursor:'pointer',fontSize:'1rem'}} ></DeleteIcon><button style={{border:'none', backGround:"#cae3f8fd",color:'#8f29ca'}}>Delete Role </button></div>
+          
             <ListItemText id={labelId} primary={`${value.Role}`} />
+            
             {access.map(item => (
                
               <ListItemIcon  style={{display:'block'}}>
               {/* {item} */}
               {/* {item[0]} */}
                   {/* {item.key} */}
+                  
                 <Checkbox
                   edge="start"
                    checked={item[1]}
@@ -164,6 +193,7 @@ let iconName=[]
                   inputProps={{ "aria-labelledby": labelId }}
                  style={{color:'grey'}}/>
               </ListItemIcon>
+              
             ))}
 
             {/* <ListItemSecondaryAction>

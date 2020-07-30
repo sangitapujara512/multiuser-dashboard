@@ -117,6 +117,7 @@ const handleChange = () => {
     <FormControlLabel
       control={<Switch checked={checked} onChange={handleChange} />}
       label="Active"
+      className='switchStyle'
     />
   </div>
       
