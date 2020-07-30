@@ -18,8 +18,15 @@ import AssessmentIcon from '@material-ui/icons/Assessment';
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
+    backgroundColor: "#e8f0f8",
+    
     // maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
+    // backgroundColor: "cae3f8fd",
+    // height: "100%",
+    // padding:'20px',
+    // margin:"20px"
+   
+
   }
 }));
 
@@ -47,8 +54,10 @@ export default function UsersAccessSummary({data}) {
   };
 let iconName=[]
   return (
+   <>
+    <p className='userText'>All user access</p> 
     <List className={classes.root}>
-   
+     
 
    {data && data.map((value)=>{
        let access=Object.entries(value && value.access)
@@ -131,7 +140,6 @@ let iconName=[]
         const labelId = `checkbox-list-label-${value.access}`;
 
         return (
-            
           <ListItem
             key={value.id}
             role={undefined}
@@ -167,5 +175,8 @@ let iconName=[]
         );
       })}
     </List>
+    </>
+    
+    
   );
 }

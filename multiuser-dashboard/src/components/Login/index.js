@@ -51,7 +51,7 @@ class LoginForm extends React.PureComponent {
          this.setState({
           adminLoggedIn:true
         });
-        alert(values.role)
+        
         //  values.role="doctor"
        
         //  dispatch(setLogin("account","newValue"))
@@ -137,8 +137,8 @@ if(this.state.wrongPassword !== prevState.wrongPassword){
             <Container
               component='main'
               maxWidth='xs'
-              >
-                <h1>Log In </h1>
+              className='externalContainer'>
+                <h1 className="loginHeader">Log In </h1>
         {/* Login form  */}
         <Formik
           initialValues={{ email: "", password: "" }}

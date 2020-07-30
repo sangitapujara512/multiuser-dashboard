@@ -3,13 +3,13 @@ html, body {
 }
 .homeCenter{
     text-align: center;
-    background-color:#e8f0f8;
+    /* background-color:#e8f0f8; */
 
 }
 .homeleft{
     font-size: 50px;
     font-family: 'Times New Roman', Times, serif;
-    color:#06023d;
+    color:#1b138a;
 }
 .activeRoles{
     /* height:25% !important; */
@@ -39,7 +39,7 @@ html,body ,#root,.App,homePage{ height:100%; }
 .rolesLayout{
     display: flex;
     width: 100%;
-    overflow: scroll;
+    overflow-x: scroll;
     
    
 }
@@ -71,4 +71,39 @@ html,body ,#root,.App,homePage{ height:100%; }
 }
 .usersAccess >ul >li {
     /* display:block !important; */
+}
+.addUserForm {       
+    margin:0 !important;
+    padding-left:10px;
+    padding-right:10px;
+    width: 20%;
+    color:grey;
+}
+.addForm{
+    padding-left:10px;
+    padding-right:10px;
+}
+.userText{
+    text-align: left;
+    margin-left: 10px;
+    font-weight: bold;
+    color: grey;
+}
+.activeText{
+    /* text-align: center; */
+    color:#8f29ca !important; 
+    font-weight: bold;  
+}
+.MuiSwitch-colorSecondary {
+    color:#ffffff !important; 
+    font-size: 10px;
+    /* background-color: #8f29ca !important; */
+   
+
+}
+.MuiSwitch-track{
+    /* border:1px solid black; */
+    
+    /* color:#3e156e !important;  */
+    background-color: #1e971e !important
 }

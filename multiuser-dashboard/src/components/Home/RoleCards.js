@@ -101,11 +101,7 @@ const handleChange = () => {
         <Typography className={classes.pos} color="textSecondary">
           {accessPoints} access points
         </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
+        
       </CardContent>
       {/* <CardActions>
         <Button size="small">Learn More</Button>

@@ -16,6 +16,7 @@ import shortid from 'shortid';
 import MultiStep from 'react-multistep';
 import Modal from 'react-modal';
 import MasterForm from './MasterForm'
+import AddIcon from'@material-ui/icons/AddOutlined';
 
  class Home extends Component {
 
@@ -147,8 +148,12 @@ closeAddModal=()=>{
       </div> */}
       <Grid item           
             lg={3}
-            md={3} className='homeleft' >
+            md={3} className='homeleft addBorderRadius' >
+            <Link to='/' style={{padding:'20px',fontSize:'20px'}} >
+                     Logout
+                    </Link>
         <h1>HOME</h1>
+        
         <Modal
           isOpen={this.state.showAddModal}
           
@@ -164,21 +169,27 @@ closeAddModal=()=>{
         </Grid>
         <Grid item           
             lg={8}
-            md={8} className='homeCenter' >
-          <Grid className="activeRoles" style={{height:'50%'}}>
-          <button onClick={this.handleAddButton}>Add Role</button>
+            md={8} className='homeCenter addBorderRadius' >
+          <Grid className="activeRoles" >
+          <div style={{display:'flex',justifyContent:'space-between'}}>
+          {/* <div style={{border:"1px solid #1b138a",width:'100px',borderRadius:'4px',margin:'10px'}}></div> */}
+          <div ></div>
+          <div style={{border:"1px solid #1b138a",width:'100px',borderRadius:'4px',margin:'10px',color:'#8f29ca'}}  onClick={this.handleAddButton}>
+          <AddIcon style={{cursor:'pointer',fontSize:'1rem'}} ></AddIcon><button style={{border:'none', backGround:"#cae3f8fd",color:'#8f29ca'}}>Add Role </button>
+          </div>
+          </div>
           <ActiveUsers data={data}/>
           
           
           </Grid>
-          <Grid className="usersAccess" style={{height:'50%'}}>All users access
+          <Grid className="usersAccess">
           <UsersAccessSummary data={data}/>
         
           </Grid>
         </Grid>
         <Grid item           
             lg={1}
-            md={1}  style={{textAlign:'center'}}>
+            md={1}  style={{textAlign:'center'}} className='addBorderRadius' >
           
         </Grid>
     </Grid>

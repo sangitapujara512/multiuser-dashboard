@@ -35,12 +35,17 @@ export default function ActiveUsers({data}) {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <div>Active Users Role</div> 
+          <div className='activeText'>Active Users Role</div> 
          
                   
         </AccordionSummary>
         <div className='roleNumber'> Total of <strong>{numberRoles} </strong>roles</div>
-        <AccordionDetails>       
+        <div>
+             
+             <input type="text" placeholder="Serch not functional" className='searchStyle'/>
+             </div> 
+        <AccordionDetails>  
+           
         
           {/* <div className="textLeft">
             Total of {} roles

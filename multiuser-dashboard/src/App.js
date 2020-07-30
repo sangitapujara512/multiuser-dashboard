@@ -16,7 +16,7 @@ import ComponentNotFound from './components/ComponentNotFound'
 
 function App() {  
   return (
-    <div className="App externalContainer">
+    <div className="App">
       <Provider store={store}>
       <ToastProvider>
       <BrowserRouter>
