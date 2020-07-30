@@ -1,3 +1,52 @@
+1) Login Page :
+	Login with any email id 
+	password : Admin123
+	logs in as Admin
+	
+	To Login normal user :
+
+	Login with any email id 
+	password : Password
+	
+	
+	If user tries to login with other than above password Error notification will be shown.
+	
+2)User redirected to Home page Dashboard
+Showing details of the user : 
+Shows number of active users 
+Click 'V'	arraow to view active Roles
+one can use swithch to activate / deactivate Roles
+
+3)All Users Access gives summary of the users acces - with number of access points
+User can delete the Role from the All user Access 
+And Role gets seleted and same is reflected for "Active "Users Role" too.
+
+4)Click on Add Role to add new Role to the dashboard
+
+Enter Role
+
+And check the access points
+
+Click Create 
+
+Roles is created and same in reflected in Dashboard along with update in "Number of Active Roles " And also the access points for the new Roles created.
+
+5) User can logout using logout button and user is again redirected to Login page.
+
+Role based login was done to implement Role based access ,but it is not implemented
+
+
+Developers Note :
+Git url : https://github.com/sangitapujara512/multiuser-dashboard
+git clone / download zip
+cd directory multiuser-dashboard
+npm install
+npm start
+
+Code deployed to Heroku url : https://shielded-tor-65103.herokuapp.com
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
