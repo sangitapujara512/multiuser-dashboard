@@ -28,6 +28,8 @@ const loginSchema = Yup.object().shape({
     .required("Required"),
     role:Yup.string()
     .required("Required"),
+    role:Yup.string()
+    .required("Required"),
 });
 
 class LoginForm extends React.PureComponent {
